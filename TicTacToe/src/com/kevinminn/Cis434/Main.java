@@ -6,7 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Main extends Application {
+
+    JFrame frame = new JFrame("TicTacToe");
+
+    private void initialize(){
+        JPanel menu = new JPanel(new BorderLayout());
+        JPanel game = new JPanel(new GridLayout());
+
+
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -19,5 +32,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+
     }
 }

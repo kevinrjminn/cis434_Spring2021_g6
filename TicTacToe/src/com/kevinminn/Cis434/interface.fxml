@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:controller="com.kevinminn.Cis434.Controller"
-          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevinminn.Cis434.Controller">
     <children>
         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="435.0" prefWidth="430.0" GridPane.halignment="LEFT">
             <children>
@@ -36,39 +35,39 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false">
+                        <Button fx:id="gameButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="1">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="2">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="2">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="110.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.rowIndex="1">
+                        <Button layoutX="110.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.rowIndex="1">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.rowIndex="2">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.rowIndex="2">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
-                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <Button layoutX="10.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClick" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <font>
                                 <Font size="48.0" />
                             </font></Button>
@@ -85,7 +84,7 @@
                         <Font size="19.0" />
                     </font>
                 </RadioButton>
-                <Button fx:id="startButton" layoutX="216.0" layoutY="34.0" mnemonicParsing="false"  prefHeight="15.0" prefWidth="94.0" text="Start!" />
+                <Button fx:id="startButton" layoutX="216.0" layoutY="34.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="94.0" text="Start!" />
                 <Pane layoutX="317.0" layoutY="71.0" prefHeight="333.0" prefWidth="107.0">
                     <children>
                         <Label prefHeight="27.0" prefWidth="106.0" text="Score" />
