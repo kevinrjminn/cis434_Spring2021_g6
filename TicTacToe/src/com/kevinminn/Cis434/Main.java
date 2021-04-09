@@ -5,20 +5,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Main extends Application {
 
-    JFrame frame = new JFrame("TicTacToe");
-
-    private void initialize(){
-        JPanel menu = new JPanel(new BorderLayout());
-        JPanel game = new JPanel(new GridLayout());
 
 
-    }
+
+//    JFrame frame = new JFrame("TicTacToe");
+////    board = new GameBoard();
+
+
+//    private void initialize(){
+//        JPanel menu = new JPanel(new BorderLayout());
+//        JPanel game = new JPanel(new GridLayout());
+//
+//
+//    }
 
 
     @Override

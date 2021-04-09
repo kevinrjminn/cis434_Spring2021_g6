@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javax.swing.*;
 
 public class TicTacToe {
+
+    
     private Character showX;
     private Character showO;
 
