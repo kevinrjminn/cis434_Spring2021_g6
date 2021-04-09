@@ -6,9 +6,9 @@
 
 - [ ] +BoardLayout impliment -> (main)
   - [ ] click listener   
--[ ] Main method
- [ ] TicTacToe (main class)
- [ ] Cells (class) 3 x 3 x 3 
+- [ ] Main method
+- [ ] TicTacToe (main class)
+- [ ] Cells (class) 3 x 3 x 3 
 ### In Progress
 
 - [ ] Work on Github Repo [JIRA-345]  
