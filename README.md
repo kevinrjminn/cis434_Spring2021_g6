@@ -13,7 +13,7 @@
 
 - [ ] set up scene-builder 
 
-- [ ] Work on Github Repo [JIRA-345]  
+- [ ] Work on Github Repo  
 
 ### Done ✓
 
