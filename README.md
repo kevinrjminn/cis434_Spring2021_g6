@@ -4,9 +4,9 @@
 
 ### Todo
 
-- [ ] +BoardLayout impliment -> (main)
+- [ ] GameBoard
   - [ ] click listener   
-- [ ] Main method
+- [ ] Main
 - [ ] TicTacToe (main class)
 - [ ] Cells (class) 3 x 3 x 3 
 ### In Progress
