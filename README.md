@@ -4,12 +4,14 @@
 
 ### Todo
 
-- [ ] GameBoard
-  - [ ] click listener   
+
+    
 - [ ] Main
 - [ ] TicTacToe (main class)
 - [ ] Cells (class) 3 x 3 x 3 
 ### In Progress
+- [ ] GameBoard ~Kevin M 
+ - [ ] click listener 
 
 - [ ] set up scene-builder 
 
