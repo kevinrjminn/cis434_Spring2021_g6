@@ -11,7 +11,7 @@
 - [ ] Cells (class) 3 x 3 x 3 
 ### In Progress
 - [ ] GameBoard ~Kevin M 
- - [ ] click listener 
+  - [ ] click listener 
 
 - [ ] set up scene-builder 
 
