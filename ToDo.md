@@ -4,10 +4,11 @@ View the raw content of this file to understand the format.
 
 ### Todo
 
-- [ ] Work on the website ~3d #feat @john 2020-03-20  
-- [ ] Fix the homepage ~1d #bug @jane  
-  - [ ] Sub-task or description  
-
+- [ ] +BoardLayout impliment -> (main)
+   - [ ] <<inner class>> click listener   
+-[ ] Main method
+ [ ] +TicTacToe (main class)
+ [ ] +Cells (class) 3 x 3 x 3 
 ### In Progress
 
 - [ ] Work on Github Repo [JIRA-345]  
