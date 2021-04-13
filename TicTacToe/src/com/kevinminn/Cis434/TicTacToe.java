@@ -23,4 +23,35 @@ public class TicTacToe extends JFrame {
     //Intially boolean variable
     //set to false
     private boolean win = false;
+
+    public TicTacToe()
+    {
+        //Call the method to create GUI board
+        createBoardGUI();
+
+        //Gets the width of the screen
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        setSize(WIDTH, HEIGHT);
+        setLocation(screenWidth / 4, screenHeight / 4);
+    }
+
+    //Implement the method to creat GUI board
+    private void createBoardGUI()
+    {
+        //Set the title of the board
+        title = new JLabel("TIC TAC TOE Game!");
+        titlePanel = new JPanel();
+        //set the font type and size
+        title.setFont(new Font(Font.MONOSPACED, 0, 40));
+        //set the fond color
+        title.setForeground(Color.BLUE);
+        //add it to the panel
+        titlePanel.add(title);
+
+        //Create panel
+        boardPanel = new JPanel();
+        boardPanel.setLayout(LAYOUT);
 }
