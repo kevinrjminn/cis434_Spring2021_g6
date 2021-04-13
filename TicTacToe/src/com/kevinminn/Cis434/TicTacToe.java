@@ -1,36 +1,26 @@
 package com.kevinminn.Cis434;
-
-import javafx.application.Application;
-
+//Import required packages
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class TicTacToe {
+public class TicTacToe extends JFrame {
+    //declare local variables
+    private static final GridLayout LAYOUT = new GridLayout(3, 3);
+    private static final int HEIGHT = 500;
+    private static final int WIDTH = 500;
 
-    
-    private Character showX;
-    private Character showO;
-
-    public TicTacToe(Character showX, Character showO) {
-        super();
-        this.showX = showX;
-        this.showO = showO;
-    }
-
-    public Character getShowX() {
-        return showX;
-    }
-
-    public void setShowX(Character showX) {
-        this.showX = showX;
-    }
-
-    public Character getShowO() {
-        return showO;
-    }
-
-    public void setShowO(Character showO) {
-        this.showO = showO;
-    }
-
-
+    //Declare array of buttons
+    private JButton buttons[] = new JButton[9];
+    private JButton exit;
+    //declare the panels
+    private JPanel wholePanel, boardPanel, titlePanel;
+    //Define the labels
+    private JLabel title;
+    private int turns = 0;
+    private String MARK = "";
+    //Intially boolean variable
+    //set to false
+    private boolean win = false;
 }
