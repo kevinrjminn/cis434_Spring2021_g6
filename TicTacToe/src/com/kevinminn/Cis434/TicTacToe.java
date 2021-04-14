@@ -140,4 +140,32 @@ public class TicTacToe extends JFrame {
             win=true;
         }
     }
+
+
+    //Implement the method to check for the Vertical wins
+    public void checkVertWins()
+    {
+        if (buttons[0].getText().equals(buttons[3].getText())
+                && buttons[3].getText().equals(buttons[6].getText())
+                && buttons[0].getText().equals("")==false)
+        {
+            win=true;
+        }
+
+        else if (buttons[1].getText().equals(buttons[4].getText())
+                && buttons[4].getText().equals(buttons[7].getText())
+                && buttons[1].getText().equals("")==false)
+        {
+            win=true;
+
+        }
+
+        else if (buttons[2].getText().equals(buttons[5].getText())
+                && buttons[5].getText().equals(buttons[8].getText())
+                && buttons[2].getText().equals("")==false)
+        {
+            win=true;
+        }
+    }
+
 }
