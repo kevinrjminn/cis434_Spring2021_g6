@@ -184,5 +184,41 @@ public class TicTacToe extends JFrame {
             win=true;
         }
     }
-
+    //Finally display the winner of the Game
+    public void displayWinner()
+    {
+        if(turns>=5 && turns<=9)
+        {
+            //Call the three methods
+            //to find the winner
+            checkHorzWins();
+            checkVertWins();
+            checkDiagWins();
+            //if the win value is true
+            //then display message
+            //either X or O is the winner
+            if (win==true)
+            {
+                JOptionPane.showMessageDialog(null, MARK
+                        + " : IS THE WINNER\n CONGRATULATIONS!");
+                System.exit(0);
+            }
+            else if (turns==9 && win==false)
+            {
+                JOptionPane.showMessageDialog(null, "GAME IS TIE.");
+                System.exit(0);
+            }
+        }
+    }
+    //main method
+    public static void main(String[] args)
+    {
+        //Creat Frame and call the constuctor
+        JFrame frame = new TicTacToe();
+        //set the frame of title
+        frame.setTitle("Tic Tac Toe Game");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
 }
+
