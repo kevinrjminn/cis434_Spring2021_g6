@@ -36,6 +36,7 @@ public class TicTacToe extends JFrame {
         int screenWidth = screenSize.width;
         setSize(WIDTH, HEIGHT);
         setLocation(screenWidth / 4, screenHeight / 4);
+        boardPanel.setLayout(LAYOUT);
     }
     //Implement the method to creat GUI board
     private void createBoardGUI()
