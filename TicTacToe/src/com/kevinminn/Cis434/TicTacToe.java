@@ -37,7 +37,6 @@ public class TicTacToe extends JFrame {
         setSize(WIDTH, HEIGHT);
         setLocation(screenWidth / 4, screenHeight / 4);
     }
-//aaaaaa more test
     //Implement the method to creat GUI board
     private void createBoardGUI()
     {
@@ -80,5 +79,65 @@ public class TicTacToe extends JFrame {
                 displayWinner();
             }
         }
+        //Create object for the ButtonListener
+        ActionListener buttonListener = new ButtonListener();
+        //use for-loop add buttons in the panel
+        for(int i=0; i<9; i++)
+        {
+            buttons[i] = new JButton("");
+            buttons[i].setBackground(Color.BLACK);
+            buttons[i].setForeground(Color.YELLOW);
+            buttons[i].setFont(new Font(Font.SERIF, 0, 24));
+            buttons[i].addActionListener(buttonListener);
+            boardPanel.add(buttons[i]);
+        }
 
+        //Create EXit button
+        exit = new JButton("EXIT");
+        exit.setFont(new Font(Font.MONOSPACED, 0, 24));
+        exit.setForeground(Color.RED);
+        //set the action listenet for exit button
+        class QuitListener implements ActionListener
+        {
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                System.exit(0);
+            }
+        }
+        ActionListener quitListener = new QuitListener();
+        exit.addActionListener(quitListener);
+
+        //Add the panel
+        wholePanel = new JPanel();
+        wholePanel.setLayout(new BorderLayout());
+        wholePanel.add(titlePanel, BorderLayout.NORTH);
+        wholePanel.add(boardPanel, BorderLayout.CENTER);
+        wholePanel.add(exit, BorderLayout.SOUTH);
+        add(wholePanel);
+    }
+
+    //Implement the method to check for the horizontal wins
+    public void checkHorzWins()
+    {
+        if (buttons[0].getText().equals(buttons[1].getText())
+                && buttons[1].getText().equals(buttons[2].getText())
+                && buttons[0].getText().equals("")==false)
+        {
+            win=true;
+        }
+
+        else if (buttons[3].getText().equals(buttons[4].getText())
+                && buttons[4].getText().equals(buttons[5].getText())
+                &&buttons[3].getText().equals("")==false)
+        {
+            win=true;
+        }
+        else if (buttons[6].getText().equals(buttons[7].getText())
+                && buttons[7].getText().equals(buttons[8].getText())
+                && buttons[6].getText().equals("")==false)
+        {
+            win=true;
+        }
+    }
 }
