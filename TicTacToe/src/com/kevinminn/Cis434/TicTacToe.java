@@ -53,5 +53,32 @@ public class TicTacToe extends JFrame {
 
         //Create panel
         boardPanel = new JPanel();
-        boardPanel.setLayout(LAYOUT);
+
+        //Implement button action
+        class ButtonListener implements ActionListener
+        {
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                //increment turn for each selection
+                turns++;
+
+                //put the Mark alteranatively
+                if(turns % 2 == 0)
+                {
+                    MARK = "O";
+                }
+                else
+                {
+                    MARK = "X";
+                }
+                //create button
+                JButton btn = (JButton)ae.getSource();
+                btn.setForeground(Color.YELLOW);
+                btn.setText(MARK);
+                btn.setEnabled(false);
+                displayWinner();
+            }
+        }
+
 }
