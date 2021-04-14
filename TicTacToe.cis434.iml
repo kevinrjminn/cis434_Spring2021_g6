@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/out/production/TicTacToe.cis434" />
-    <output-test url="file://$MODULE_DIR$/out/test/TicTacToe.cis434" />
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/TicTacToe/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javaFX.11" level="application" />
-    <orderEntry type="library" name="javaFX.jdk11" level="application" />
   </component>
 </module>

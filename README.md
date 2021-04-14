@@ -6,16 +6,14 @@
 
 
     
-- [ ] Main
-- [ ] TicTacToe (main class)
-- [ ] Cells (class) 3 x 3 x 3 
+- [x] Main
+- [x] TicTacToe (main class)
+- [x] Cells (class) 3 x 3 x 3 
 ### In Progress
 - [ ] GameBoard @Kevin Minn
-  - [ ] click listener 
+  - [ ] click listener
 
-- [ ] set up scene-builder 
-
-- [ ] Work on Github Repo  
+  - [x] Work on Github Repo  
 
 ### Done ✓
 
