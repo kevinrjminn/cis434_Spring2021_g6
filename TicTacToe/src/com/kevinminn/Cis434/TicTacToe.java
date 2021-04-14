@@ -167,5 +167,22 @@ public class TicTacToe extends JFrame {
             win=true;
         }
     }
+    //Implement the method to check for the Diaogonal wins
+    public void checkDiagWins()
+    {
+        if (buttons[0].getText().equals(buttons[4].getText())
+                && buttons[4].getText().equals(buttons[8].getText())
+                && buttons[0].getText().equals("")==false)
+        {
+            win=true;
+        }
+
+        else if (buttons[2].getText().equals(buttons[4].getText())
+                && buttons[4].getText().equals(buttons[6].getText())
+                && buttons[2].getText().equals("")==false)
+        {
+            win=true;
+        }
+    }
 
 }
