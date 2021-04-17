@@ -11,6 +11,11 @@
 - [x] Implement button action
 - [x] Create panel
 ### In Progress
+
+
+### Done ✓
+
+- [x] TODO.md 
 - [x] GameBoard @Kevin Minn
 - [x] click listener
 - [x] Create object for the ButtonListener
@@ -26,9 +31,5 @@
 - [x] main method
  - [x] Creat Frame and call the constuctor
 
-- [x] Work on Github Repo  
-
-### Done ✓
-
-- [x] TODO.md  
+- [x] Work on Github Repo   
 
