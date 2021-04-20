@@ -4,221 +4,335 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 public class TicTacToe extends JFrame {
     //declare local variables
-    private static final GridLayout LAYOUT = new GridLayout(3, 3);
-    private static final int HEIGHT = 500;
-    private static final int WIDTH = 500;
+//    private static final GridLayout LAYOUT = new GridLayout(3, 3);
+//    private static final int HEIGHT = 500;
+//    private static final int WIDTH = 500;
 
     //Declare array of buttons
-    private JButton buttons[] = new JButton[9];
-    private JButton exit;
-    //declare the panels
-    private JPanel wholePanel, boardPanel, titlePanel;
-    //Define the labels
-    private JLabel title;
-    private int turns = 0;
-    private String MARK = "";
-    //Intially boolean variable
+    private JFrame mainFrame;
+    private JPanel scorePanel, buttonPanel, statusPanel;
+    private JLabel statusLabel;
+    private JButton[][] board;
+    private JTextField xScoreField, oScoreField, drawsField;
+    private JLabel xLabel, oLabel, drawsLabel;
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem newGameMenuItem;
+    private JMenuItem exitMenuItem;
+
+    private String currentPlayer;
+    private boolean Win;
+    private int xScore, oScore, drawsScore, buttonClicked;
+    //Initialize boolean variable
     //set to false
     private boolean win = false;
 
+
     public TicTacToe()
     {
-        //Call the method to create GUI board
-        createBoardGUI();
+        mainFrame = new JFrame();
+        mainFrame.setLayout(new BorderLayout());
 
-        //Gets the width of the screen
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
-        setSize(WIDTH, HEIGHT);
-        setLocation(screenWidth / 4, screenHeight / 4);
+// panel to contain the player score statistics
+        scorePanel = new JPanel(new FlowLayout(0, 15, 5));
+
+        xLabel = new JLabel("Player 1: ");
+        xScoreField = new JTextField(10);
+        xScoreField.setHorizontalAlignment(SwingConstants.CENTER);
+        xScoreField.setEditable(false);
+
+        oScoreField = new JTextField(10);
+        oScoreField.setEditable(false);
+        oScoreField.setHorizontalAlignment(SwingConstants.CENTER);
+        oLabel = new JLabel("Player 2: ");
+
+        drawsField = new JTextField(10);
+        drawsField.setHorizontalAlignment(SwingConstants.CENTER);
+        drawsField.setEditable(false);
+        drawsLabel = new JLabel("Draws: ");
+
+        scorePanel.add(xLabel);
+        scorePanel.add(xScoreField);
+        scorePanel.add(oLabel);
+        scorePanel.add(oScoreField);
+        scorePanel.add(drawsLabel);
+        scorePanel.add(drawsField);
+
+// panel to contain the buttons
+        buttonPanel = new JPanel(new GridLayout(3, 3));
+
+        statusPanel = new JPanel();
+        statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
+
+// game status label
+        statusLabel = new JLabel("New Game");
+        statusLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        statusPanel.add(statusLabel);
+
+        board = new JButton[3][3];
+        currentPlayer = "X";
+        xScore = 0;
+        oScore = 0;
+        drawsScore = 0;
+        buttonClicked = 0;
+        Win = false;
+
+        initBoard();
+        initMenu();
+
+        mainFrame.add(scorePanel, BorderLayout.NORTH);
+        mainFrame.add(buttonPanel, BorderLayout.CENTER);
+        mainFrame.add(statusPanel, BorderLayout.SOUTH);
+
+        mainFrame.setSize(700, 500);
+        mainFrame.setTitle("Tic Tac Toe: Group_6");
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        mainFrame.setResizable(false);
+        mainFrame.setVisible(true);
     }
-    //Implement the method to creat GUI board
-    private void createBoardGUI()
+
+
+    private void initBoard()
     {
-        //Set the title of the board
-        title = new JLabel("TIC TAC TOE Game!");
-        titlePanel = new JPanel();
-        //set the font type and size
-        title.setFont(new Font(Font.MONOSPACED, 0, 40));
-        //set the fond color
-        title.setForeground(Color.BLUE);
-        //add it to the panel
-        titlePanel.add(title);
-
-        //Create panel
-        boardPanel = new JPanel();
-
-        //Implement button action
-        class ButtonListener implements ActionListener
+        for(int i = 0; i < 3; i++)
         {
+            for(int j = 0; j < 3; j++)
+            {
+                JButton btn = new JButton();
+                btn.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
+                board[i][j] = btn;
+
+// set action listener for the buttons
+                btn.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(((JButton)e.getSource()).getText().equals("") && Win == false)
+                        {
+                            btn.setText(currentPlayer);
+                            buttonClicked++;
+                            checkWin();
+                            switchPlayers();
+                        }
+                    }
+                });
+
+                buttonPanel.add(btn);
+            }
+        }
+    }
+
+    private void initMenu()
+    {
+        menuBar = new JMenuBar();
+        menu = new JMenu("Menu");
+        newGameMenuItem = new JMenuItem("New Game");
+        newGameMenuItem.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                //increment turn for each selection
-                turns++;
-
-                //put the Mark alteranatively
-                if(turns % 2 == 0)
-                {
-                    MARK = "O";
-                }
-                else
-                {
-                    MARK = "X";
-                }
-                //create button
-                JButton btn = (JButton)ae.getSource();
-                btn.setForeground(Color.YELLOW);
-                btn.setText(MARK);
-                btn.setEnabled(false);
-                displayWinner();
+            public void actionPerformed(ActionEvent e) {
+                resetBoard();
+                statusLabel.setText("New Game");
+                xScore = oScore = drawsScore = 0;
+                xScoreField.setText("");
+                oScoreField.setText("");
+                drawsField.setText("");
             }
-        }
-        //Create object for the ButtonListener
-        ActionListener buttonListener = new ButtonListener();
-        //use for-loop add buttons in the panel
-        for(int i=0; i<9; i++)
-        {
-            buttons[i] = new JButton("");
-            buttons[i].setBackground(Color.BLACK);
-            buttons[i].setForeground(Color.YELLOW);
-            buttons[i].setFont(new Font(Font.SERIF, 0, 24));
-            buttons[i].addActionListener(buttonListener);
-            boardPanel.add(buttons[i]);
-        }
+        });
+        exitMenuItem = new JMenuItem("Exit");
+        exitMenuItem.addActionListener(new ActionListener() {
 
-        //Create EXit button
-        exit = new JButton("EXIT");
-        exit.setFont(new Font(Font.MONOSPACED, 0, 24));
-        exit.setForeground(Color.RED);
-        //set the action listenet for exit button
-        class QuitListener implements ActionListener
-        {
             @Override
-            public void actionPerformed(ActionEvent ae)
-            {
+            public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
-        }
-        ActionListener quitListener = new QuitListener();
-        exit.addActionListener(quitListener);
-
-        //Add the panel
-        wholePanel = new JPanel();
-        wholePanel.setLayout(new BorderLayout());
-        wholePanel.add(titlePanel, BorderLayout.NORTH);
-        wholePanel.add(boardPanel, BorderLayout.CENTER);
-        wholePanel.add(exit, BorderLayout.SOUTH);
-        add(wholePanel);
-    }
-
-    //Implement the method to check for the horizontal wins
-    public void checkHorzWins()
-    {
-        if (buttons[0].getText().equals(buttons[1].getText())
-                && buttons[1].getText().equals(buttons[2].getText())
-                && buttons[0].getText().equals("")==false)
-        {
-            win=true;
-        }
-
-        else if (buttons[3].getText().equals(buttons[4].getText())
-                && buttons[4].getText().equals(buttons[5].getText())
-                &&buttons[3].getText().equals("")==false)
-        {
-            win=true;
-        }
-        else if (buttons[6].getText().equals(buttons[7].getText())
-                && buttons[7].getText().equals(buttons[8].getText())
-                && buttons[6].getText().equals("")==false)
-        {
-            win=true;
-        }
+        });
+        menu.add(newGameMenuItem);
+        menu.add(exitMenuItem);
+        menuBar.add(menu);
+        mainFrame.setJMenuBar(menuBar);
     }
 
 
-    //Implement the method to check for the Vertical wins
-    public void checkVertWins()
+
+    private void resetBoard()
     {
-        if (buttons[0].getText().equals(buttons[3].getText())
-                && buttons[3].getText().equals(buttons[6].getText())
-                && buttons[0].getText().equals("")==false)
+        switchPlayers();
+        buttonClicked = 0;
+        Win = false;
+        for(int i = 0; i < 3; i++)
         {
-            win=true;
-        }
-
-        else if (buttons[1].getText().equals(buttons[4].getText())
-                && buttons[4].getText().equals(buttons[7].getText())
-                && buttons[1].getText().equals("")==false)
-        {
-            win=true;
-
-        }
-
-        else if (buttons[2].getText().equals(buttons[5].getText())
-                && buttons[5].getText().equals(buttons[8].getText())
-                && buttons[2].getText().equals("")==false)
-        {
-            win=true;
-        }
-    }
-    //Implement the method to check for the Diaogonal wins
-    public void checkDiagWins()
-    {
-        if (buttons[0].getText().equals(buttons[4].getText())
-                && buttons[4].getText().equals(buttons[8].getText())
-                && buttons[0].getText().equals("")==false)
-        {
-            win=true;
-        }
-
-        else if (buttons[2].getText().equals(buttons[4].getText())
-                && buttons[4].getText().equals(buttons[6].getText())
-                && buttons[2].getText().equals("")==false)
-        {
-            win=true;
-        }
-    }
-    //Finally display the winner of the Game
-    public void displayWinner()
-    {
-        if(turns>=5 && turns<=9)
-        {
-            //Call the three methods
-            //to find the winner
-            checkHorzWins();
-            checkVertWins();
-            checkDiagWins();
-            //if the win value is true
-            //then display message
-            //either X or O is the winner
-            if (win==true)
+            for(int j = 0; j < 3; j++)
             {
-                JOptionPane.showMessageDialog(null, MARK
-                        + " : IS THE WINNER\n CONGRATULATIONS!");
-                System.exit(0);
-            }
-            else if (turns==9 && win==false)
-            {
-                JOptionPane.showMessageDialog(null, "GAME IS TIE.");
-                System.exit(0);
+                board[i][j].setText("");
             }
         }
     }
-    //main method
+
+    private void switchPlayers()
+    {
+        if(currentPlayer.equals("X"))
+        {
+            currentPlayer = "O";
+            statusLabel.setText("Player " + currentPlayer + "'s turn...");
+        }
+        else
+        {
+            currentPlayer = "X";
+            statusLabel.setText("Player " + currentPlayer + "'s turn...");
+        }
+    }
+
+    private void checkWin()
+    {
+
+        if(board[0][0].getText().equals(currentPlayer) && board[1][0].getText().equals(currentPlayer) && board[2][0].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+        else if(board[0][1].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][1].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+        else if(board[0][2].getText().equals(currentPlayer) && board[1][2].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+
+        else if(board[0][0].getText().equals(currentPlayer) && board[0][1].getText().equals(currentPlayer) && board[0][2].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+
+        else if(board[1][0].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[1][2].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+
+        else if(board[2][0].getText().equals(currentPlayer) && board[2][1].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+
+        else if(board[0][0].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+
+// right to left diagonal
+        else if(board[0][2].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][0].getText().equals(currentPlayer))
+        {
+            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            if(currentPlayer.equals("X"))
+                xScoreField.setText(++xScore + "");
+            else
+                oScoreField.setText(++oScore + "");
+
+            statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
+            Win = true;
+            resetBoard();
+        }
+        else
+        {
+// the game is a draw
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    if(!board[i][j].getText().equals("") && buttonClicked == 9)
+                    {
+                        JOptionPane.showMessageDialog(null, "The match is a draw!");
+                        statusLabel.setText("Game over! The game is a draw.");
+                        drawsField.setText(++drawsScore +"");
+                        Win = false;
+                        resetBoard();
+                    }
+                }
+            }
+        }
+    }
+
+
+
     public static void main(String[] args)
     {
-        //Creat Frame and call the constuctor
-        JFrame frame = new TicTacToe();
-        //set the frame of title
-        frame.setTitle("Tic Tac Toe Game");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        TicTacToe ticTacToe = new TicTacToe();
+
     }
+
 }
+
+
+
+
+
+
+
+
 
