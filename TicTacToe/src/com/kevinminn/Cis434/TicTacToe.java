@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
-public class TicTacToe extends JFrame {
+public class TicTacToe {
     //declare local variables
 //    private static final GridLayout LAYOUT = new GridLayout(3, 3);
 //    private static final int HEIGHT = 500;
@@ -318,13 +318,6 @@ public class TicTacToe extends JFrame {
         }
     }
 
-
-
-    public static void main(String[] args)
-    {
-        TicTacToe ticTacToe = new TicTacToe();
-
-    }
 
 }
 
