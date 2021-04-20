@@ -90,7 +90,7 @@ public class TicTacToe {
         mainFrame.add(statusPanel, BorderLayout.SOUTH);
 
         mainFrame.setSize(700, 500);
-        mainFrame.setTitle("Tic Tac Toe: Group_6");
+        mainFrame.setTitle("Tic Tac Toe: Group 6");
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.setResizable(false);
