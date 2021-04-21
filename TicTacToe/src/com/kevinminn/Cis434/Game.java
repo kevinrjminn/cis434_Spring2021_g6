@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Game extends JFrame {
 
     public static void main(String[] args) {
-        TicTacToe ticTacToe = new TicTacToe();
+        new TicTacToe();
     }
 
 }
