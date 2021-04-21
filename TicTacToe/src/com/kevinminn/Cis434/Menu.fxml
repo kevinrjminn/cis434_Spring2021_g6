@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Menu.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevinminn.Cis434.MenuController">
+    <children>
+        <Label layoutX="234.0" layoutY="90.0" prefHeight="43.0" prefWidth="229.0" text="Tic Tac Toe">
+            <font>
+                <Font size="29.0" />
+            </font>
+        </Label>
+        <Button fx:id="StartBtn" layoutX="234.0" layoutY="216.0" mnemonicParsing="false" onAction="#StartGame" prefHeight="43.0" prefWidth="152.0" styleClass="newGamebtn" text="New Game">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ComboBox fx:id="comboboxbtn" layoutX="231.0" layoutY="180.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="157.0" promptText="               Best Of" styleClass="combobox">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Button fx:id="exitGamebtn" layoutX="231.0" layoutY="275.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="43.0" prefWidth="157.0" styleClass="newGamebtn" text="Exit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+    </children>
+</AnchorPane>
