@@ -1,5 +1,11 @@
 package com.kevinminn.Cis434;
 //Import required packages
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +29,7 @@ public class TicTacToe {
     private JMenu menu;
     private JMenuItem newGameMenuItem;
     private JMenuItem exitMenuItem;
+    private JMenuItem mainMenuItem;
 
     private String currentPlayer;
     private boolean Win;
@@ -31,6 +38,8 @@ public class TicTacToe {
     //set to false
     private boolean win = false;
 
+
+    public static int bestOf;
 
     public TicTacToe()
     {
@@ -152,8 +161,33 @@ public class TicTacToe {
                 System.exit(0);
             }
         });
+//        mainMenuItem = new JMenuItem("Main Menu");
+//        mainMenuItem.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                try{
+//                    //Stage oldstage = (Stage) StartBtn.getScene().getWindow();
+//                    //oldstage.close();
+//                    Stage menuStage = new Stage();
+//                    FXMLLoader menuLoader = new FXMLLoader();
+//                    Pane menuRoot = (Pane)menuLoader.load(getClass().getResource("Menu.fxml").openStream());
+//
+//                    Scene menuScene = new Scene(menuRoot);
+//                    menuStage.setScene(menuScene);
+//                    menuStage.setTitle("TicTacToe Main Menu");
+//                    menuStage.setResizable(false);
+//                    menuStage.show();
+//
+//
+//                }catch(Exception ex){
+//
+//                }
+//            }
+//        });
+
         menu.add(newGameMenuItem);
         menu.add(exitMenuItem);
+       // menu.add(mainMenuItem);
         menuBar.add(menu);
         mainFrame.setJMenuBar(menuBar);
     }
@@ -193,19 +227,20 @@ public class TicTacToe {
 
         if(board[0][0].getText().equals(currentPlayer) && board[1][0].getText().equals(currentPlayer) && board[2][0].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
                 oScoreField.setText(++oScore + "");
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
         else if(board[0][1].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][1].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -213,12 +248,13 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
         else if(board[0][2].getText().equals(currentPlayer) && board[1][2].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -226,13 +262,14 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
 
         else if(board[0][0].getText().equals(currentPlayer) && board[0][1].getText().equals(currentPlayer) && board[0][2].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -240,13 +277,14 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
 
         else if(board[1][0].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[1][2].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -254,13 +292,14 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
 
         else if(board[2][0].getText().equals(currentPlayer) && board[2][1].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -268,13 +307,14 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
 
         else if(board[0][0].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][2].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -282,13 +322,14 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
 
 // right to left diagonal
         else if(board[0][2].getText().equals(currentPlayer) && board[1][1].getText().equals(currentPlayer) && board[2][0].getText().equals(currentPlayer))
         {
-            JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " is the Winner!");
+            JOptionPane.showMessageDialog(null, "Round Winner is Player: " + currentPlayer );
             if(currentPlayer.equals("X"))
                 xScoreField.setText(++xScore + "");
             else
@@ -296,6 +337,7 @@ public class TicTacToe {
 
             statusLabel.setText("Game over! Player " + currentPlayer + " wins!");
             Win = true;
+            checkSeriesWinner();
             resetBoard();
         }
         else
@@ -311,13 +353,41 @@ public class TicTacToe {
                         statusLabel.setText("Game over! The game is a draw.");
                         drawsField.setText(++drawsScore +"");
                         Win = false;
+                        checkSeriesWinner();
                         resetBoard();
                     }
                 }
             }
         }
+
     }
 
+    private void checkSeriesWinner(){
+        try{
+            //System.out.println("Best Of:" + bestOf);
+            if(Integer.parseInt(xScoreField.getText()) >= bestOf){
+                JOptionPane.showMessageDialog(null, "Game Over!! Player " + currentPlayer + " is the Winner!");
+                resetBoard();
+                xScore = oScore = drawsScore = 0;
+                xScoreField.setText("");
+                oScoreField.setText("");
+                drawsField.setText("");
+            }
+        }catch(Exception ex){
+        }
+
+        try{
+            if(Integer.parseInt(oScoreField.getText()) >= bestOf){
+                JOptionPane.showMessageDialog(null, "Game Over!! Player " + currentPlayer + " is the Winner!");
+                resetBoard();
+                xScore = oScore = drawsScore = 0;
+                xScoreField.setText("");
+                oScoreField.setText("");
+                drawsField.setText("");
+            }
+        }catch(Exception ex){
+        }
+    }
 
 }
 
